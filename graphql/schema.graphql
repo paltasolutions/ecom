@@ -76,5 +76,5 @@ type Cart {
 
 
 type Query {
-    cart(id: String!): Cart @first
+    cart(id: String! @eq): Cart @find
 }

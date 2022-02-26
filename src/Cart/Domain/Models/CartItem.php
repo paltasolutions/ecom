@@ -7,6 +7,7 @@ namespace PaltaSolutions\Cart\Domain\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use PaltaSolutions\Cart\Infrastructure\Database\Factories\CartItemFactory;
 use PaltaSolutions\Currency\Eloquent\Concerns\HasCurrency;
 use PaltaSolutions\Support\Eloquent\Concerns\HasUuid;
 
@@ -34,5 +35,10 @@ class CartItem extends Model
     public function getSubTotalAmountAttribute()
     {
         return $this->line_total * $this->quantity;
+    }
+
+    protected static function newFactory()
+    {
+        return CartItemFactory::new();
     }
 }

@@ -1,41 +1,80 @@
-"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
-scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
-"Indicates what fields are available at the top level of a query operation."
-type Query {
-    "Find a single user by an identifying attribute."
-    user(
-      "Search by primary key."
-      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+"A datetime string with format `Y-m-d H: i: s`, e.g. `2018-05-23 13: 43: 32`."
+scalar DateTime
+@scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
-      "Search by email address."
-      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
-    ): User @find
+"A datetime and timezone string in ISO 8601 format `Y-m-dTH:i:sO`, e.g. `2020-04-20T13:53:12+02:00`."
+scalar DateTimeTz
+@scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTimeTz")
 
-    "List multiple users."
-    users(
-      "Filters by name. Accepts SQL LIKE wildcards `%` and `_`."
-      name: String @where(operator: "like")
-    ): [User!]! @paginate(defaultCount: 10)
+type Currency {
+    code: CurrencyCode
+    symbol: String
+    thousands_separator: String
+    decimal_separator: String
+    decimals: Int
 }
 
-"Account of a person who utilizes this application."
-type User {
-    "Unique primary key."
-    id: ID!
 
-    "Non-unique name."
-    name: String!
+type Money {
+    amount: Int
+    currency: Currency!
+    formatted: String!
+}
 
-    "Unique email address."
-    email: String!
+type CustomCartAttribute {
+    key: String!
+    value: String
+}
 
-    "When the email was verified."
-    email_verified_at: DateTime
+input CustomAttributeInput {
+    key: String!
+    value: String
+}
 
-    "When the account was created."
-    created_at: DateTime!
+type CustomAttribute {
+    key: String!
+    value: String
+}
 
-    "When the account was last updated."
-    updated_at: DateTime!
+type CartItem {
+    id: String!
+    name: String
+    description: String
+    type: CartItemType!
+    unit_total: Money!
+    line_total: Money!
+    quantity: Int!
+    #    attributes: [CustomCartAttribute!]!
+    #    metadata: Json
+    created_at: Date!
+    updated_at: Date!
+}
+
+
+type Cart {
+    id: String!
+    currency: Currency!
+    email: String
+    total_items: Int
+    total_unique_items: Int
+    items: [CartItem!]! @hasMany
+    sub_total: Money!
+    shipping_total: Money!
+    tax_total: Money!
+    grand_total: Money!
+    is_empty: Boolean
+    abandoned: Boolean
+    attributes: [CustomCartAttribute!]!
+    #    metadata: Json
+    notes: String
+    created_at: Date!
+    updated_at: Date!
+}
+
+
+type Query {
+    cart(id: String!): Cart @first
 }

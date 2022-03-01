@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace PaltaSolutions\Cart\Providers;
 
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\Finder\Finder;
 use GraphQL\Type\Definition\EnumType;
 use Illuminate\Support\ServiceProvider;
 use Nuwave\Lighthouse\Schema\TypeRegistry;
+use Nuwave\Lighthouse\Events\BuildSchemaString;
 use PaltaSolutions\Cart\Domain\Models\Enums\CartItemType;
 
 class CartServiceProvider extends ServiceProvider
@@ -33,7 +35,22 @@ class CartServiceProvider extends ServiceProvider
 
     public function register()
     {
+        app('events')->listen(
+            BuildSchemaString::class,
+            function () {
+                $schemas = [];
+                // if (file_exists(base_path('graphql/schema.graphql'))) {
+                //     $stitcher = new SchemaStitcher(base_path('graphql/schema.graphql'));
+                //     $schemas[] = $stitcher->getSchemaString();
+                // }
 
+                foreach ((new Finder())->files()->name('*.graphql')->in(__DIR__.'/../graphql/*') as $schema) {
+                    $schemas[] = file_get_contents($schema->getRealPath());
+                }
+
+                return implode('', $schemas);
+            }
+        );
     }
 
     protected function mergeConfigFrom($path, $key)

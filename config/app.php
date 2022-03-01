@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        \PaltaSolutions\Currency\Providers\CurrencyServiceProvider::class,
         \PaltaSolutions\Cart\Providers\CartServiceProvider::class,
     ],
 

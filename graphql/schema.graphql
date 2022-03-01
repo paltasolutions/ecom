@@ -9,21 +9,6 @@ scalar DateTime
 scalar DateTimeTz
 @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTimeTz")
 
-type Currency {
-    code: CurrencyCode
-    symbol: String
-    thousands_separator: String
-    decimal_separator: String
-    decimals: Int
-}
-
-
-type Money {
-    amount: Int
-    currency: Currency!
-    formatted: String!
-}
-
 type CustomCartAttribute {
     key: String!
     value: String
@@ -38,42 +23,6 @@ type CustomAttribute {
     key: String!
     value: String
 }
-
-type CartItem {
-    id: String!
-    name: String
-    description: String
-    type: CartItemType!
-    unit_total: Money!
-    line_total: Money!
-    quantity: Int!
-    #    attributes: [CustomCartAttribute!]!
-    #    metadata: Json
-    created_at: Date!
-    updated_at: Date!
-}
-
-
-type Cart {
-    id: String!
-    currency: Currency!
-    email: String
-    total_items: Int
-    total_unique_items: Int
-    items: [CartItem!]! @hasMany
-    sub_total: Money!
-    shipping_total: Money!
-    tax_total: Money!
-    grand_total: Money!
-    is_empty: Boolean
-    abandoned: Boolean
-    attributes: [CustomCartAttribute!]!
-    #    metadata: Json
-    notes: String
-    created_at: Date!
-    updated_at: Date!
-}
-
 
 type Query {
     cart(id: String! @eq): Cart @find

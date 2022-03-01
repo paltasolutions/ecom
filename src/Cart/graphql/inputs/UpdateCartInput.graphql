@@ -1,0 +1,8 @@
+input UpdateCartInput {
+    id: String!
+    currency: CurrencyInput
+    email: String
+    notes: String
+    # attributes: [CustomAttributeInput]
+    # metadata: Json
+}

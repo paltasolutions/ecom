@@ -1,0 +1,7 @@
+type Currency {
+    code: CurrencyCode
+    symbol: String
+    thousands_separator: String
+    decimal_separator: String
+    decimals: Int
+}

@@ -1,0 +1,13 @@
+type CartItem {
+    id: String!
+    name: String
+    description: String
+    type: CartItemType!
+    unit_total: Money!
+    line_total: Money!
+    quantity: Int!
+    #    attributes: [CustomCartAttribute!]!
+    #    metadata: Json
+    created_at: Date!
+    updated_at: Date!
+}

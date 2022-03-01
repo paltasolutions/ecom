@@ -1,0 +1,5 @@
+type Money {
+    amount: Int
+    currency: Currency!
+    formatted: String!
+}

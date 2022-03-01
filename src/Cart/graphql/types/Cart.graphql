@@ -1,0 +1,19 @@
+type Cart {
+    id: String!
+    currency: Currency!
+    email: String
+    total_items: Int
+    total_unique_items: Int
+    items: [CartItem!]! @hasMany
+    sub_total: Money!
+    shipping_total: Money!
+    tax_total: Money!
+    grand_total: Money!
+    is_empty: Boolean
+    abandoned: Boolean
+    #    attributes: [CustomCartAttribute!]!
+    #    metadata: Json
+    notes: String
+    created_at: Date!
+    updated_at: Date!
+}

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace PaltaSolutions\Currency\Providers;
 
+use Symfony\Component\Finder\Finder;
 use GraphQL\Type\Definition\EnumType;
 use Illuminate\Support\ServiceProvider;
-use Nuwave\Lighthouse\Events\BuildSchemaString;
 use Nuwave\Lighthouse\Schema\TypeRegistry;
 use PaltaSolutions\Currency\Enums\Currency;
-use Symfony\Component\Finder\Finder;
+use Nuwave\Lighthouse\Events\BuildSchemaString;
 
 class CurrencyServiceProvider extends ServiceProvider
 {

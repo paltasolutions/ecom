@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PaltaSolutions\Cart\Infrastructure\Database\Factories\CartItemFactory;
 use PaltaSolutions\Currency\Eloquent\Concerns\HasCurrency;
+use PaltaSolutions\Currency\Enums\Currency;
 use PaltaSolutions\Support\Eloquent\Concerns\HasUuid;
 
 class CartItem extends Model
@@ -16,6 +17,20 @@ class CartItem extends Model
     use HasFactory
         , HasUuid
         , HasCurrency;
+
+    protected $fillable = [
+        'name',
+        'line_total_amount',
+        'unit_total_amount',
+        'quantity',
+    ];
+
+    protected $attributes = [
+        'line_total_amount' => 0,
+        'unit_total_amount' => 0,
+        'quantity' => 0,
+        'currency_code' => Currency::USD,
+    ];
 
     public function cart(): BelongsTo
     {

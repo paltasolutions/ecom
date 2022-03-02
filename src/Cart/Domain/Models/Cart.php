@@ -19,6 +19,10 @@ class Cart extends Model
         HasUuid,
         HasCurrency;
 
+    public function getSubTotalAttribute()
+    {
+        return $this->toMoney($this->attributes['sub_total_amount']);
+    }
 
     public function items(): HasMany
     {

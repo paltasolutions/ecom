@@ -1,0 +1,5 @@
+extend type Mutation {
+    # Use this to add items to the cart. If the item already exists, the provided
+    # input will be merged and quantity will be increased.
+    addItemToCart(input: AddToCartInput! @spread): Cart
+}

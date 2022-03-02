@@ -1,0 +1,13 @@
+input AddToCartInput {
+    cart_id: String! @rules(apply: ["exists:carts,id"])
+    id: String
+    name: String @rules(apply: ["required"])
+    description: String
+    type: CartItemType = SKU
+    #    images: [String]
+    unit_total_amount: Int!
+    currency: CurrencyInput
+    quantity: Int = 1
+    #    attributes: [CustomAttributeInput]
+    #    metadata: Json
+}

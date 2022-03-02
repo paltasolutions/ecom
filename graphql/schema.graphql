@@ -27,3 +27,5 @@ type CustomAttribute {
 type Query {
     cart(id: String! @eq): Cart @find
 }
+
+type Mutation

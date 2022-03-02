@@ -176,7 +176,10 @@ return [
             'PaltaSolutions\\Cart\\Domain\\Models',
         ],
         'queries' => 'App\\GraphQL\\Queries',
-        'mutations' => 'App\\GraphQL\\Mutations',
+        'mutations' => [
+            'App\\GraphQL\\Mutations',
+            'PaltaSolutions\\Cart\\Application\\GraphQL\\Mutations',
+        ],
         'subscriptions' => 'App\\GraphQL\\Subscriptions',
         'interfaces' => 'App\\GraphQL\\Interfaces',
         'unions' => 'App\\GraphQL\\Unions',

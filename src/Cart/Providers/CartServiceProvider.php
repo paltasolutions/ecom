@@ -10,10 +10,26 @@ use GraphQL\Type\Definition\EnumType;
 use Illuminate\Support\ServiceProvider;
 use Nuwave\Lighthouse\Schema\TypeRegistry;
 use Nuwave\Lighthouse\Events\BuildSchemaString;
+use PaltaSolutions\Cart\Contracts\Actions\AddsItemToCart;
 use PaltaSolutions\Cart\Domain\Models\Enums\CartItemType;
+use PaltaSolutions\Cart\Application\Actions\AddItemToCart;
+use PaltaSolutions\Cart\Application\Actions\UpdateCartShippingTotal;
+use PaltaSolutions\Cart\Contracts\Actions\UpdatesCartTotals;
+use PaltaSolutions\Cart\Infrastructure\Services\CartService;
+use PaltaSolutions\Cart\Application\Actions\UpdateCartTotals;
+use PaltaSolutions\Cart\Contracts\Actions\UpdatesCartShippingTotal;
+use PaltaSolutions\Cart\Contracts\CartService as CartServiceContract;
 
 class CartServiceProvider extends ServiceProvider
 {
+
+    public array $bindings = [
+        AddsItemToCart::class => AddItemToCart::class,
+        UpdatesCartTotals::class => UpdateCartTotals::class,
+        UpdatesCartShippingTotal::class => UpdateCartShippingTotal::class,
+        CartServiceContract::class => CartService::class
+    ];
+
     public function boot(TypeRegistry $typeRegistry)
     {
         $this->loadMigrationsFrom(__DIR__.'/../Infrastructure/Database/Migrations');

@@ -15,6 +15,13 @@ it('can query existing cart', function () {
             cart(id: $id) {
                 id
                 email
+                sub_total {
+                    formatted
+                }
+                currency {
+                    code
+                    symbol
+                }
             }
         }
 GQL;
@@ -26,7 +33,10 @@ GQL;
         'data' => [
             'cart' => [
                 'id' => $cart->id,
-                'email' => $cart->email
+                'email' => $cart->email,
+                'currency' => [
+                    'code' => 'USD'
+                ]
             ]
         ]
     ]);

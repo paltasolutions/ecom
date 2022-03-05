@@ -25,9 +25,9 @@ class CartServiceProvider extends ServiceProvider
 
     public array $bindings = [
         AddsItemToCart::class => AddItemToCart::class,
+        CartServiceContract::class => CartService::class,
         UpdatesCartTotals::class => UpdateCartTotals::class,
         UpdatesCartShippingTotal::class => UpdateCartShippingTotal::class,
-        CartServiceContract::class => CartService::class
     ];
 
     public function boot(TypeRegistry $typeRegistry)

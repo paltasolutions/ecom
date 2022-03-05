@@ -3,8 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use PaltaSolutions\Cart\Domain\Models\Cart;
-use PaltaSolutions\Cart\Domain\Models\Enums\CartItemType;
 use PaltaSolutions\Currency\Enums\Currency;
 
 class AddCartTables extends Migration
@@ -40,23 +38,7 @@ class AddCartTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('cart_items', function (Blueprint $table) {
-            $table->uuid('id')->primary();
 
-            $table->string('name');
-            $table->string('currency_code')->default(Currency::USD->value);
-            $table->string('type')->default(CartItemType::SKU->value);
-
-            $table->text('description')->nullable();
-
-            $table->unsignedInteger('unit_total_amount')->default(0);
-            $table->unsignedInteger('line_total_amount')->default(0);
-            $table->unsignedInteger('quantity')->default(0);
-
-            $table->foreignIdFor(Cart::class);
-
-            $table->timestamps();
-        });
     }
 
     /**
@@ -67,6 +49,5 @@ class AddCartTables extends Migration
     public function down()
     {
         Schema::dropIfExists('carts');
-        Schema::dropIfExists('cart_items');
     }
 }

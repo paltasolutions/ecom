@@ -47,9 +47,14 @@ class CartItem extends Model
         return $this->toMoney($this->attributes['line_total_amount']);
     }
 
+    public function getSubTotalAttribute()
+    {
+        return $this->toMoney($this->sub_total_amount);
+    }
+
     public function getSubTotalAmountAttribute()
     {
-        return $this->line_total * $this->quantity;
+        return $this->attributes['line_total_amount'] * $this->quantity;
     }
 
     protected static function newFactory()

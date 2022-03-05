@@ -15,7 +15,8 @@ class CartItemFactory extends Factory
 
     public function definition(): array
     {
-        $amount = $this->faker->randomNumber(2);
+        $amount = $this->faker->randomNumber(3);
+        $amount *= 10;
 
         return [
             'id' => $this->faker->uuid(),

@@ -22,6 +22,18 @@ mutation($cart_id: String!, $name: String, $unit_total_amount: Int!) {
             id
             name
             quantity
+            line_total {
+                formatted
+            }
+            sub_total {
+                formatted
+            }
+            unit_total {
+                formatted
+            }
+            line_total {
+                amount
+            }
         }
     }
 }
@@ -119,4 +131,50 @@ it('can add same item twice to cart', function() use ($mutationQuery) {
     ]);
     // Should still be 1 uniqe item
     assertCount(1, $cart->fresh(['items'])->items);
+});
+
+it('can add two unique items to cart', function() use ($mutationQuery) {
+    $cart = Cart::factory()->create();
+    $cartItem1 = CartItem::factory()->make();
+    $payload = [
+        'cart_id' => $cart->id,
+        'name' => $cartItem1->name,
+        'unit_total_amount' => $cartItem1->unit_total_amount,
+    ];
+
+    // First unique item added
+    graphQL($mutationQuery, $payload);
+
+    // Create second unique item
+    $cartItem2 = CartItem::factory()->make();
+    $payload = [
+        'cart_id' => $cart->id,
+        'name' => $cartItem2->name,
+        'unit_total_amount' => $cartItem2->unit_total_amount,
+    ];
+    // Second unique item added
+    graphQL($mutationQuery, $payload)
+    ->dump()
+    ->assertJson([
+        'data' => [
+            'addItemToCart' => [
+                'id' => $cart->id,
+                'email' => $cart->email,
+                'items' => [[
+                    'line_total' => [
+                        'amount' => $cartItem1->line_total_amount,
+                    ],
+                    'name' => $cartItem1->name,
+                    'quantity' => 1,
+
+                ],[
+                    'name' => $cartItem2->name,
+                    'quantity' => 1,
+
+                ]]
+            ]
+        ]
+    ]);
+    // Should still be 2 uniqe items
+    assertCount(2, $cart->fresh(['items'])->items);
 });

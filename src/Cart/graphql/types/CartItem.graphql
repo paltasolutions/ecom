@@ -5,6 +5,7 @@ type CartItem {
     type: CartItemType!
     unit_total: Money!
     line_total: Money!
+    sub_total: Money!
     quantity: Int!
     #    attributes: [CustomCartAttribute!]!
     #    metadata: Json

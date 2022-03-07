@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PaltaSolutions\Cart\Contracts\Actions;
+namespace PaltaSolutions\Cart\Application\Contracts;
 
 use PaltaSolutions\Cart\Domain\Models\Cart;
 

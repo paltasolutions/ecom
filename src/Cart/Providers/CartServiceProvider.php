@@ -11,14 +11,14 @@ use Illuminate\Support\ServiceProvider;
 use Nuwave\Lighthouse\Schema\TypeRegistry;
 use Nuwave\Lighthouse\Events\BuildSchemaString;
 use PaltaSolutions\Cart\Contracts\Enums\CartItemType;
-use PaltaSolutions\Cart\Contracts\Actions\AddsItemToCart;
 use PaltaSolutions\Cart\Application\Actions\AddItemToCart;
-use PaltaSolutions\Cart\Application\Actions\UpdateCartShippingTotal;
-use PaltaSolutions\Cart\Contracts\Actions\UpdatesCartTotals;
 use PaltaSolutions\Cart\Infrastructure\Services\CartService;
 use PaltaSolutions\Cart\Application\Actions\UpdateCartTotals;
-use PaltaSolutions\Cart\Contracts\Actions\UpdatesCartShippingTotal;
+use PaltaSolutions\Cart\Application\Contracts\AddsItemToCart;
+use PaltaSolutions\Cart\Application\Contracts\UpdatesCartTotals;
+use PaltaSolutions\Cart\Application\Actions\UpdateCartShippingTotal;
 use PaltaSolutions\Cart\Contracts\CartService as CartServiceContract;
+use PaltaSolutions\Cart\Application\Contracts\UpdatesCartShippingTotal;
 
 class CartServiceProvider extends ServiceProvider
 {

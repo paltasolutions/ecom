@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace PaltaSolutions\Cart\Application\Actions;
 
-use PaltaSolutions\Cart\Contracts\Actions\UpdatesCartTotals;
 use PaltaSolutions\Cart\Domain\Models\Cart;
 use PaltaSolutions\Cart\Domain\Models\CartItem;
-use PaltaSolutions\Cart\Domain\Models\Enums\CartItemType;
+use PaltaSolutions\Cart\Contracts\Enums\CartItemType;
+use PaltaSolutions\Cart\Application\Contracts\UpdatesCartTotals;
 
 class UpdateCartTotals implements UpdatesCartTotals
 {

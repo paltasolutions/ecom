@@ -6,7 +6,7 @@ namespace PaltaSolutions\Cart\Application\Actions;
 
 use Illuminate\Support\Arr;
 use PaltaSolutions\Cart\Domain\Models\Cart;
-use PaltaSolutions\Cart\Contracts\Actions\AddsItemToCart;
+use PaltaSolutions\Cart\Application\Contracts\AddsItemToCart;
 
 class AddItemToCart implements AddsItemToCart
 {

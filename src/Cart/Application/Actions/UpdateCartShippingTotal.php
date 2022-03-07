@@ -6,8 +6,8 @@ namespace PaltaSolutions\Cart\Application\Actions;
 
 use PaltaSolutions\Cart\Domain\Models\Cart;
 use PaltaSolutions\Cart\Domain\Models\CartItem;
-use PaltaSolutions\Cart\Domain\Models\Enums\CartItemType;
-use PaltaSolutions\Cart\Contracts\Actions\UpdatesCartShippingTotal;
+use PaltaSolutions\Cart\Contracts\Enums\CartItemType;
+use PaltaSolutions\Cart\Application\Contracts\UpdatesCartShippingTotal;
 
 class UpdateCartShippingTotal implements UpdatesCartShippingTotal
 {

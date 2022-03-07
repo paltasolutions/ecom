@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace PaltaSolutions\Cart\Infrastructure\Services;
 
 use PaltaSolutions\Cart\Domain\Models\Cart;
-use PaltaSolutions\Cart\Contracts\Actions\AddsItemToCart;
-use PaltaSolutions\Cart\Contracts\Actions\UpdatesCartShippingTotal;
-use PaltaSolutions\Cart\Contracts\Actions\UpdatesCartTotals;
+use PaltaSolutions\Cart\Application\Contracts\AddsItemToCart;
 use PaltaSolutions\Cart\Contracts\DataTransferObjects\CartDto;
+use PaltaSolutions\Cart\Application\Contracts\UpdatesCartTotals;
 use PaltaSolutions\Cart\Contracts\CartService as CartServiceContract;
+use PaltaSolutions\Cart\Application\Contracts\UpdatesCartShippingTotal;
 
 class CartService implements CartServiceContract
 {

@@ -11,12 +11,12 @@ use Illuminate\Support\ServiceProvider;
 use Nuwave\Lighthouse\Schema\TypeRegistry;
 use Nuwave\Lighthouse\Events\BuildSchemaString;
 use PaltaSolutions\Cart\Contracts\Enums\CartItemType;
-use PaltaSolutions\Cart\Application\Actions\AddItemToCart;
 use PaltaSolutions\Cart\Infrastructure\Services\CartService;
 use PaltaSolutions\Cart\Application\Actions\UpdateCartTotals;
-use PaltaSolutions\Cart\Application\Contracts\AddsItemToCart;
 use PaltaSolutions\Cart\Application\Contracts\UpdatesCartTotals;
+use PaltaSolutions\Cart\Application\Actions\ComputeCartItemTotals;
 use PaltaSolutions\Cart\Application\Actions\UpdateCartShippingTotal;
+use PaltaSolutions\Cart\Application\Contracts\ComputesCartItemTotals;
 use PaltaSolutions\Cart\Contracts\CartService as CartServiceContract;
 use PaltaSolutions\Cart\Application\Contracts\UpdatesCartShippingTotal;
 
@@ -24,7 +24,7 @@ class CartServiceProvider extends ServiceProvider
 {
 
     public array $bindings = [
-        AddsItemToCart::class => AddItemToCart::class,
+        ComputesCartItemTotals::class => ComputeCartItemTotals::class,
         CartServiceContract::class => CartService::class,
         UpdatesCartTotals::class => UpdateCartTotals::class,
         UpdatesCartShippingTotal::class => UpdateCartShippingTotal::class,

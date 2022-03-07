@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use PaltaSolutions\Cart\Domain\Models\Cart;
-use PaltaSolutions\Cart\Domain\Models\Enums\CartItemType;
+use PaltaSolutions\Cart\Contracts\Enums\CartItemType;
 use PaltaSolutions\Currency\Enums\Currency;
 
 class CreateCartItemsTable extends Migration
@@ -20,7 +20,7 @@ class CreateCartItemsTable extends Migration
             $table->uuid('id')->primary();
 
             $table->string('name');
-            $table->string('currency_code')->default(Currency::USD->value);
+            $table->string('currency')->default(Currency::USD->value);
             $table->string('type')->default(CartItemType::SKU->value);
 
             $table->text('description')->nullable();

@@ -18,7 +18,7 @@ class AddCartTables extends Migration
             $table->uuid('id')->primary();
 
             $table->string('email');
-            $table->string('currency_code')->default(Currency::USD->value);
+            $table->string('currency')->default(Currency::USD->value);
 
             $table->unsignedInteger('total_items')->default(0);
             $table->unsignedInteger('total_unique_items')->default(0);

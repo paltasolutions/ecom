@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PaltaSolutions\Cart\Domain\Models\Enums;
+namespace PaltaSolutions\Cart\Contracts\Enums;
 
 enum CartItemType: string
 {

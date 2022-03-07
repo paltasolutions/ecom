@@ -6,7 +6,7 @@ namespace PaltaSolutions\Cart\Infrastructure\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use PaltaSolutions\Cart\Domain\Models\CartItem;
-use PaltaSolutions\Cart\Domain\Models\Enums\CartItemType;
+use PaltaSolutions\Cart\Contracts\Enums\CartItemType;
 use PaltaSolutions\Currency\Enums\Currency;
 
 class CartItemFactory extends Factory

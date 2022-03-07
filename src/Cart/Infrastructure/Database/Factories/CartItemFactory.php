@@ -21,7 +21,7 @@ class CartItemFactory extends Factory
         return [
             'id' => $this->faker->uuid(),
             'name' => $this->faker->name(),
-            'currency_code' => Currency::USD,
+            'currency' => Currency::USD,
             'type' => CartItemType::SKU,
             'description' => null,
             'unit_total_amount' => $amount,

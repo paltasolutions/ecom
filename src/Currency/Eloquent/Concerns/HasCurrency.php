@@ -4,41 +4,40 @@ declare(strict_types=1);
 
 namespace PaltaSolutions\Currency\Eloquent\Concerns;
 
-use Illuminate\Support\Facades\Log;
 use PaltaSolutions\Currency\Enums\Currency;
 
 trait HasCurrency
 {
-    public function getCurrencyAttribute()
-    {
-        $currency = Currency::from($this->currency_code);
+    // public function getCurrencyAttribute()
+    // {
+    //     return Currency::from($this->currency_code);
+    // }
 
+    public function getCurrency()
+    {
         return [
-            'code' => $currency->value,
-            'symbol' => $currency->symbol(),
-            'thousands_separator' => $currency->thousandsSeparator(),
-            'decimal_separator' => $currency->decimalSeparator(),
-            'decimals' => $currency->decimals(),
+            'code' => $this->currency->value,
+            'symbol' => $this->currency->symbol(),
+            'thousands_separator' => $this->currency->thousandsSeparator(),
+            'decimal_separator' => $this->currency->decimalSeparator(),
+            'decimals' => $this->currency->decimals(),
         ];
     }
 
     public function toMoney(int $amount): array
     {
-        $symbolFormat = '%s%s %s';
-        $currency = Currency::from($this->currency_code);
-
         return [
             'amount' => $amount,
-            'currency' => $currency,
+            'currency' => $this->currency,
             'formatted' => sprintf(
-                $symbolFormat,
-                $currency->toUpperCase(),
-                $currency->symbol(),
+                '%s%s %s',
+                $this->currency->toUpperCase(),
+                $this->currency->symbol(),
                 number_format(
                     $amount / 100,
-                    $currency->decimals(),
-                    $currency->decimalSeparator(),
-                    $currency->thousandsSeparator()
+                    $this->currency->decimals(),
+                    $this->currency->decimalSeparator(),
+                    $this->currency->thousandsSeparator()
                 )),
         ];
     }

@@ -29,7 +29,11 @@ class CartItem extends Model
         'line_total_amount' => 0,
         'unit_total_amount' => 0,
         'quantity' => 0,
-        'currency_code' => Currency::USD,
+        'currency' => Currency::USD,
+    ];
+
+    public $casts = [
+        'currency' => Currency::class,
     ];
 
     public function cart(): BelongsTo

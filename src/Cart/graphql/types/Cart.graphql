@@ -1,6 +1,6 @@
 type Cart {
     id: String!
-    currency: Currency!
+    currency: Currency! @method(name: "getCurrency")
     email: String
     total_items: Int
     total_unique_items: Int

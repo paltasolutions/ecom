@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace PaltaSolutions\Cart\Domain\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use PaltaSolutions\Currency\Enums\Currency;
 use PaltaSolutions\Cart\Domain\Models\CartItem;
-use PaltaSolutions\Cart\Infrastructure\Database\Factories\CartFactory;
-use PaltaSolutions\Currency\Eloquent\Concerns\HasCurrency;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use PaltaSolutions\Support\Eloquent\Concerns\HasUuid;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use PaltaSolutions\Currency\Eloquent\Concerns\HasCurrency;
+use PaltaSolutions\Cart\Infrastructure\Database\Factories\CartFactory;
 
 class Cart extends Model
 {
@@ -18,6 +19,10 @@ class Cart extends Model
         HasFactory,
         HasUuid,
         HasCurrency;
+
+    public $casts = [
+        'currency' => Currency::class,
+    ];
 
     public function getSubTotalAttribute()
     {

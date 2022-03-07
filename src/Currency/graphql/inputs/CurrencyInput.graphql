@@ -3,5 +3,5 @@ input CurrencyInput {
     symbol: String
     thousands_separator: String
     decimal_separator: String
-    decimal_digits: Int
+    decimals: Int
 }

@@ -1,13 +1,13 @@
-function DeleteCartItemButton(props: React.HTMLAttributes<HTMLButtonElement>) {
+function Button({children, ...props}: React.HTMLAttributes<HTMLButtonElement>) {
     return (
         <button
             type="button"
             className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
             {...props}
         >
-            Remove
+            {children}
         </button>
     )
 }
 
-export default DeleteCartItemButton
+export default Button

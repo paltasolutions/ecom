@@ -1,7 +1,23 @@
+import Button from "./atom/button"
 import CartHeader from "./atom/cartHeader"
-import CartItemImage from "./atom/cartItemImage"
 import CloseCartButton from "./atom/closeCartButton"
-import DeleteCartItemButton from "./atom/deleteCartItemButton"
+import List from "./molecules/list"
+
+const items = [{
+    color: 'Salmon',
+    description: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+    name: 'Throwback Hip Bag',
+    price: '$90.00',
+    quantity: 1
+}, {
+    color: 'Blue',
+    description: 'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    name: 'Medium Stuff Satchel',
+    price: '$32.00',
+    quantity: 1
+}]
 
 function ShoppingCart() {
     return (
@@ -39,69 +55,7 @@ function ShoppingCart() {
                                         <CloseCartButton />
                                     </div>
                                 </div>
-
-                                <div className="mt-8">
-                                    <div className="flow-root">
-                                        <ul role="list" className="-my-6 divide-y divide-gray-200">
-                                            <li className="flex py-6">
-                                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                    <CartItemImage
-                                                        src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
-                                                        alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
-                                                    />
-                                                </div>
-
-                                                <div className="ml-4 flex flex-1 flex-col">
-                                                    <div>
-                                                        <div className="flex justify-between text-base font-medium text-gray-900">
-                                                            <h3>
-                                                                <a href="#"> Throwback Hip Bag </a>
-                                                            </h3>
-                                                        <p className="ml-4">$90.00</p>
-                                                        </div>
-                                                        <p className="mt-1 text-sm text-gray-500">Salmon</p>
-                                                    </div>
-                                                    <div className="flex flex-1 items-end justify-between text-sm">
-                                                        <p className="text-gray-500">Qty 1</p>
-
-                                                        <div className="flex">
-                                                            <DeleteCartItemButton />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li className="flex py-6">
-                                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                    <CartItemImage
-                                                        src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg"
-                                                        alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch."
-                                                    />
-                                                </div>
-
-                                                <div className="ml-4 flex flex-1 flex-col">
-                                                    <div>
-                                                        <div className="flex justify-between text-base font-medium text-gray-900">
-                                                            <h3>
-                                                                <a href="#"> Medium Stuff Satchel </a>
-                                                            </h3>
-                                                        <p className="ml-4">$32.00</p>
-                                                        </div>
-                                                        <p className="mt-1 text-sm text-gray-500">Blue</p>
-                                                    </div>
-                                                    <div className="flex flex-1 items-end justify-between text-sm">
-                                                        <p className="text-gray-500">Qty 1</p>
-
-                                                        <div className="flex">
-                                                            <DeleteCartItemButton />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        {/* <!-- More products... --> */}
-                                        </ul>
-                                    </div>
-                                </div>
+                                <List items={items} />
                             </div>
 
                             <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
@@ -115,7 +69,7 @@ function ShoppingCart() {
                                 </div>
                                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                                     <p>
-                                        or <button type="button" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">Continue Shopping<span aria-hidden="true"> &rarr;</span></button>
+                                        or <Button>Continue Shopping<span aria-hidden="true"> &rarr;</span></Button>
                                     </p>
                                 </div>
                             </div>

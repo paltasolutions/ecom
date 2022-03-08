@@ -12,9 +12,7 @@ class AddSequenceToCartItem implements AddsSequenceToCartItem
 {
     public function __invoke(Cart $cart, CartItem $cartItem): CartItem
     {
-        $countCartItems = $cart->items()->count();
-
-        $cartItem->sequence = $countCartItems + 1;
+        $cartItem->sequence = $cart->items()->count() + 1;
 
         return $cartItem;
     }

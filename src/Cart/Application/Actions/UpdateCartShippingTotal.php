@@ -12,11 +12,9 @@ class UpdateCartShippingTotal implements UpdatesCartShippingTotal
 {
     public function __invoke(Cart $cart): Cart
     {
-        $items = $cart->items()
+        $cart->shipping_total_amount = $cart->items()
             ->where('type', CartItemType::SHIPPING)
-            ->get();
-
-        $cart->shipping_total_amount = $items->sum('line_total');
+            ->sum('line_total_amount');
 
         return $cart;
     }

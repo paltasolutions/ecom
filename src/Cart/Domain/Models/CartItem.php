@@ -23,12 +23,14 @@ class CartItem extends Model
         'line_total_amount',
         'unit_total_amount',
         'quantity',
+        'sequence',
     ];
 
     protected $attributes = [
         'line_total_amount' => 0,
         'unit_total_amount' => 0,
         'quantity' => 0,
+        'sequence' => 0,
         'currency' => Currency::USD,
     ];
 

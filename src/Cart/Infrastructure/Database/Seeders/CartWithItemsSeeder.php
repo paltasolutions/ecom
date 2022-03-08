@@ -12,10 +12,16 @@ class CartWithItemsSeeder extends Seeder
 {
     public function run()
     {
+        $cartCount = 3;
+
         Cart::factory()
-            // ->has(CartItem::factory()->count(3), 'items')
-            ->hasItems(3)
-            ->count(3)
+            ->has(
+                CartItem::factory()
+                    ->count(3)
+                    ->sequence(fn ($sequence) => ['sequence' => ($sequence->index % $cartCount) + 1]),
+                'items'
+            )
+            ->count($cartCount)
             ->create();
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PaltaSolutions\Cart\Infrastructure\Services;
 
 use Illuminate\Support\Arr;
+use PaltaSolutions\Cart\Application\Contracts\AddsSequenceToCartItem;
 use PaltaSolutions\Cart\Domain\Models\Cart;
 use PaltaSolutions\Cart\Domain\Models\CartItem;
 use PaltaSolutions\Cart\Application\Contracts\ComputesCartItemTotals;
@@ -16,6 +17,7 @@ use PaltaSolutions\Cart\Application\Contracts\UpdatesCartShippingTotal;
 class CartService implements CartServiceContract
 {
     public function __construct(
+        private AddsSequenceToCartItem $addSequenceToCartItem,
         private ComputesCartItemTotals $computesCartItemTotals,
         private UpdatesCartTotals $updateCartTotals,
         private UpdatesCartShippingTotal $updateCartShippingTotal
@@ -32,6 +34,7 @@ class CartService implements CartServiceContract
             $unitTotalAmount,
             $quantity
         );
+        ($this->addSequenceToCartItem)($cart, $cartItem);
         $cartItem->save();
 
         ($this->updateCartTotals)($cart);

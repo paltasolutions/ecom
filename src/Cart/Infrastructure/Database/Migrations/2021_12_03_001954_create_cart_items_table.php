@@ -25,6 +25,7 @@ class CreateCartItemsTable extends Migration
 
             $table->text('description')->nullable();
 
+            $table->unsignedInteger('sequence')->default(0);
             $table->unsignedInteger('line_total_amount')->default(0);
             $table->unsignedInteger('unit_total_amount')->default(0);
 

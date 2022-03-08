@@ -1,3 +1,8 @@
+import CartHeader from "./atom/cartHeader"
+import CartItemImage from "./atom/cartItemImage"
+import CloseCartButton from "./atom/closeCartButton"
+import DeleteCartItemButton from "./atom/deleteCartItemButton"
+
 function ShoppingCart() {
     return (
         <div className="fixed inset-0 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
@@ -29,15 +34,9 @@ function ShoppingCart() {
                         <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                             <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                                 <div className="flex items-start justify-between">
-                                    <h2 className="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
+                                    <CartHeader />
                                     <div className="ml-3 flex h-7 items-center">
-                                        <button type="button" className="-m-2 p-2 text-gray-400 hover:text-gray-500">
-                                            <span className="sr-only">Close panel</span>
-                                            {/* <!-- Heroicon name: outline/x --> */}
-                                            <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
+                                        <CloseCartButton />
                                     </div>
                                 </div>
 
@@ -46,7 +45,10 @@ function ShoppingCart() {
                                         <ul role="list" className="-my-6 divide-y divide-gray-200">
                                             <li className="flex py-6">
                                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                    <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="h-full w-full object-cover object-center" />
+                                                    <CartItemImage
+                                                        src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
+                                                        alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                                                    />
                                                 </div>
 
                                                 <div className="ml-4 flex flex-1 flex-col">
@@ -63,7 +65,7 @@ function ShoppingCart() {
                                                         <p className="text-gray-500">Qty 1</p>
 
                                                         <div className="flex">
-                                                            <button type="button" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                                                            <DeleteCartItemButton />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -71,7 +73,10 @@ function ShoppingCart() {
 
                                             <li className="flex py-6">
                                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                    <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." className="h-full w-full object-cover object-center" />
+                                                    <CartItemImage
+                                                        src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg"
+                                                        alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch."
+                                                    />
                                                 </div>
 
                                                 <div className="ml-4 flex flex-1 flex-col">
@@ -88,7 +93,7 @@ function ShoppingCart() {
                                                         <p className="text-gray-500">Qty 1</p>
 
                                                         <div className="flex">
-                                                            <button type="button" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                                                            <DeleteCartItemButton />
                                                         </div>
                                                     </div>
                                                 </div>

@@ -1,7 +1,8 @@
-import ListItem, { ListItemProps } from "./listItem";
+import { CartItem } from "../generated";
+import ListItem from "./listItem";
 
 interface ListProps {
-    items: ListItemProps[]
+    items: CartItem[]
 }
 
 function List({items}: ListProps) {
@@ -9,7 +10,7 @@ function List({items}: ListProps) {
         <div className="mt-8">
             <div className="flow-root">
                 <ul role="list" className="-my-6 divide-y divide-gray-200">
-                    {items.map(item => <ListItem {...item} />)}
+                    {items.map((item, key) => <ListItem {...item} key={`cartItem-${key}`} />)}
                 </ul>
             </div>
         </div>

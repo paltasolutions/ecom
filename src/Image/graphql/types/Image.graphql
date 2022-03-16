@@ -1,0 +1,6 @@
+type Image {
+    id: String!
+    alt: String!
+    title: String!
+    src: String!
+}

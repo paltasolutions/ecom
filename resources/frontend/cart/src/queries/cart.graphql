@@ -1,0 +1,26 @@
+query cart($id: String!)
+{
+  cart(id: $id) {
+    id
+    email
+    sub_total {
+      formatted
+    }
+    items {
+      id
+      quantity
+      name
+      description
+      line_total {
+      	formatted
+        amount
+        currency {
+          thousands_separator
+          decimal_separator
+          decimals
+          symbol
+        }
+      }
+    }
+  }
+}

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PaltaSolutions\Cart\Infrastructure\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use PaltaSolutions\Cart\Domain\Models\Cart;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CartFactory extends Factory
 {

@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace PaltaSolutions\Cart\Infrastructure\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use PaltaSolutions\Cart\Domain\Models\CartItem;
-use PaltaSolutions\Cart\Contracts\Enums\CartItemType;
+use PaltaSolutions\Cart\Domain\Models\Cart;
 use PaltaSolutions\Currency\Enums\Currency;
+use PaltaSolutions\Cart\Domain\Models\CartItem;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use PaltaSolutions\Cart\Contracts\Enums\CartItemType;
+use PaltaSolutions\Cart\Application\Actions\UpdateCartTotals;
 
 class CartItemFactory extends Factory
 {
@@ -27,6 +29,14 @@ class CartItemFactory extends Factory
             'unit_total_amount' => $amount,
             'line_total_amount' => $amount,
             'quantity' => 1,
+            'cart_id' => Cart::factory(),
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (CartItem $cartItem) {
+            (new UpdateCartTotals())($cartItem->cart)->save();
+        });
     }
 }

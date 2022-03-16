@@ -4,15 +4,8 @@ declare(strict_types=1);
 
 namespace PaltaSolutions\Currency\Eloquent\Concerns;
 
-use PaltaSolutions\Currency\Enums\Currency;
-
 trait HasCurrency
 {
-    // public function getCurrencyAttribute()
-    // {
-    //     return Currency::from($this->currency_code);
-    // }
-
     public function getCurrency()
     {
         return [
@@ -28,7 +21,7 @@ trait HasCurrency
     {
         return [
             'amount' => $amount,
-            'currency' => $this->currency,
+            'currency' => $this->getCurrency(),
             'formatted' => sprintf(
                 '%s%s %s',
                 $this->currency->toUpperCase(),

@@ -1,10 +1,12 @@
 import Button from "../atom/button";
+import CartItemImage from "../atom/cartItemImage";
 import { CartItem } from "../generated";
 import number_format from "../number_format";
 
 function ListItem({
     name,
     line_total,
+    image,
     quantity
 }: CartItem) {
     const formattedAmount =
@@ -17,6 +19,10 @@ function ListItem({
 
     return (
         <li className="flex py-6">
+            <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                <CartItemImage {...image} />
+            </div>
+
             <div className="ml-4 flex flex-1 flex-col">
                 <div>
                     <div className="flex justify-between text-base font-medium text-gray-900">

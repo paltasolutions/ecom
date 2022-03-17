@@ -60,6 +60,7 @@ export type CartItem = {
   created_at: Scalars['Date'];
   description?: Maybe<Scalars['String']>;
   id: Scalars['String'];
+  image?: Maybe<Image>;
   line_total: Money;
   name?: Maybe<Scalars['String']>;
   quantity: Scalars['Int'];
@@ -275,6 +276,14 @@ export type CustomCartAttribute = {
   value?: Maybe<Scalars['String']>;
 };
 
+export type Image = {
+  __typename?: 'Image';
+  alt: Scalars['String'];
+  id: Scalars['String'];
+  src: Scalars['String'];
+  title: Scalars['String'];
+};
+
 export type Money = {
   __typename?: 'Money';
   amount?: Maybe<Scalars['Int']>;
@@ -419,7 +428,7 @@ export type CartQueryVariables = Exact<{
 }>;
 
 
-export type CartQuery = { __typename?: 'Query', cart?: { __typename?: 'Cart', id: string, email?: string | null, sub_total: { __typename?: 'Money', formatted: string }, items: Array<{ __typename?: 'CartItem', id: string, quantity: number, name?: string | null, description?: string | null, line_total: { __typename?: 'Money', formatted: string, amount?: number | null, currency: { __typename?: 'Currency', thousands_separator?: string | null, decimal_separator?: string | null, decimals?: number | null, symbol?: string | null } } }> } | null };
+export type CartQuery = { __typename?: 'Query', cart?: { __typename?: 'Cart', id: string, email?: string | null, sub_total: { __typename?: 'Money', formatted: string }, items: Array<{ __typename?: 'CartItem', id: string, quantity: number, name?: string | null, description?: string | null, image?: { __typename?: 'Image', src: string, alt: string } | null, line_total: { __typename?: 'Money', formatted: string, amount?: number | null, currency: { __typename?: 'Currency', thousands_separator?: string | null, decimal_separator?: string | null, decimals?: number | null, symbol?: string | null } } }> } | null };
 
 
 export const CartDocument = `
@@ -435,6 +444,10 @@ export const CartDocument = `
       quantity
       name
       description
+      image {
+        src
+        alt
+      }
       line_total {
         formatted
         amount

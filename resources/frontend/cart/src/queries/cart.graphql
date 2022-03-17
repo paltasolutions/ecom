@@ -11,6 +11,10 @@ query cart($id: String!)
       quantity
       name
       description
+      image {
+          src
+          alt
+      }
       line_total {
       	formatted
         amount

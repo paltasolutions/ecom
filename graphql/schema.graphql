@@ -24,6 +24,10 @@ type CustomAttribute {
     value: String
 }
 
+extend type CartItem {
+    image: Image @field(resolver: "PaltaSolutions\\Image\\Resolvers\\ImageResolver")
+}
+
 type Query {
     cart(id: String! @eq): Cart @find
 }

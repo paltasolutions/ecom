@@ -179,6 +179,7 @@ return [
 
         \PaltaSolutions\Currency\Providers\CurrencyServiceProvider::class,
         \PaltaSolutions\Cart\Providers\CartServiceProvider::class,
+        \PaltaSolutions\Image\Providers\ImageServiceProvider::class,
     ],
 
     /*

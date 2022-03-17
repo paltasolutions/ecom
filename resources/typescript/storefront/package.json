@@ -1,0 +1,10 @@
+{
+  "name": "@paltasolutions/storefront",
+  "version": "1.0.0",
+  "description": "Storefront app",
+  "main": "index.js",
+  "repository": "https://github.com/paltasolutions/storefront",
+  "author": "Paltasolutions",
+  "license": "MIT",
+  "private": true
+}

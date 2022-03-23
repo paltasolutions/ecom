@@ -1,5 +1,6 @@
 {
-  "name": "graphql-types",
+  "name": "@paltasolutions/graphql-types",
+  "private": true,
   "version": "1.0.0",
   "description": "Shared types for graphql storefront",
   "author": "Mauricio Kruijer <mauricio.kruijer@gmail.com>",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "graphql": "^16.3.0",
-    "graphql-request": "^4.2.0"
+    "graphql-request": "^4.2.0",
+    "react-query": "^3.34.16"
   }
 }

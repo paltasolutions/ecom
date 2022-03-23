@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Cart from './cart'
-import DingDong from './dingdong'
 
-export { Cart, DingDong }
+export { Cart }
 
 ReactDOM.render(
   <React.StrictMode>

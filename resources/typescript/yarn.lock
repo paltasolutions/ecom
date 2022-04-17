@@ -405,7 +405,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@paltasolutions/cart@workspace:packages/cart":
+"@paltasolutions/cart@workspace:^, @paltasolutions/cart@workspace:packages/cart":
   version: 0.0.0-use.local
   resolution: "@paltasolutions/cart@workspace:packages/cart"
   dependencies:
@@ -427,6 +427,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@paltasolutions/storefront@workspace:storefront"
   dependencies:
+    "@paltasolutions/cart": "workspace:^"
     "@types/react": ^17.0.33
     "@types/react-dom": ^17.0.10
     "@vitejs/plugin-react": ^1.0.7

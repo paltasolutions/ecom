@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Cart from './cart'
+import {Cart} from '@paltasolutions/cart'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Cart />
+      haaalllooo!!11!
+      <Cart />
   </React.StrictMode>,
   document.getElementById('root')
 )

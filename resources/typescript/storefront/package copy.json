@@ -2,12 +2,9 @@
   "name": "@paltasolutions/cart",
   "private": true,
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --project tsconfig.module.json",
-    "build-vite": "build && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

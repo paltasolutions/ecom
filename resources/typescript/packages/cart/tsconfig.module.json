@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "rootDir": "src",
+        "outDir": "dist",
+        "declaration": true,
+        "jsx": "react-jsx",
+        // "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
+        "emitDeclarationOnly": true,
+  },
+  "exclude": [
+      "vite.config.ts",
+      "vite.config.d.ts",
+      "src/main.tsx",
+      "src/vite-env.d.ts",
+    ]
+
+}

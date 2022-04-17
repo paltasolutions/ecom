@@ -61,6 +61,7 @@ GQL;
     graphQL($gql, [
         'id' => $cart->id,
     ])
+    ->dump('data')
     ->assertJson([
         'data' => [
             'cart' => [

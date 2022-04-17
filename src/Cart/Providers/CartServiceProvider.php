@@ -70,6 +70,8 @@ class CartServiceProvider extends ServiceProvider
                 return implode('', $schemas);
             }
         );
+
+        $this->app->register(ObserverProvider::class);
     }
 
     protected function mergeConfigFrom($path, $key)

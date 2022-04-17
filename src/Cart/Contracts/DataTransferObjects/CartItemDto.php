@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PaltaSolutions\Cart\Contracts\DataTransferObjects;
 
-use Exception;
 use PaltaSolutions\Currency\Enums\Currency;
-use PaltaSolutions\Cart\Domain\Models\Enums\CartItemType;
+use Illuminate\Validation\ValidationException;
+use PaltaSolutions\Cart\Contracts\Enums\CartItemType;
 
 class CartItemDto
 {
@@ -16,20 +16,26 @@ class CartItemDto
         public readonly string $description,
         public readonly CartItemType $type,
         public readonly int $unit_total_amount,
+        public readonly int $line_total_amount,
         public readonly int $quantity,
         public readonly Currency $currency,
     ) {}
 
     public static function hydrate(array $attributes): CartItemDto
     {
+        $currency = $attributes['currency'] ?? throw ValidationException::withMessages(['currency' => 'Currency is requiredaaa.']);
+
         return new self(
-            $attributes['id'] ?: null,
-            $attributes['name'] ?? throw new Exception('broo'),
-            $attributes['description'] ?: null,
-            $attributes['type'] ?: CartItemType::SKU,
-            $attributes['unit_total_amount'] ?? throw new Exception('burf'),
-            $attributes['quantity'] ?? throw new Exception('ala'),
-            $attributes['currency'] ?? throw new Exception('aa')
+            $attributes['id'] ?? '',
+            $attributes['name'] ?? throw ValidationException::withMessages(['name' => 'Name is required.']),
+            $attributes['description'] ?? '',
+            // TODO fix type from string
+            is_string($attributes['type']) ? CartItemType::from($attributes['type']) : CartItemType::SKU,
+            $attributes['unit_total_amount'] ?? throw ValidationException::withMessages(['unit_total_amount' => 'Unit_total_amount is required.']),
+            $attributes['line_total_amount'] ?? 0,
+            $attributes['quantity'] ?? throw ValidationException::withMessages(['quantity' => 'Quantity is required.']),
+            // TODO fix type from array
+            $currency
         );
     }
 
@@ -41,6 +47,7 @@ class CartItemDto
             'description' => $this->description,
             'type' => $this->type,
             'unit_total_amount' => $this->unit_total_amount,
+            'line_total_amount' => $this->line_total_amount,
             'quantity' => $this->quantity,
             'currency' => $this->currency,
         ];

@@ -54,8 +54,7 @@ class CartService implements CartServiceContract
     {
         $id = Arr::pull($attributes, 'id');
 
-        if ($cart->is_empty)
-        {
+        if ($cart->is_empty) {
             return $cart->items()->make($attributes);
         }
 

@@ -1,0 +1,30 @@
+parameters:
+  paths:
+    - ./src/Cart
+  layers:
+    - name: CartModule
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: PaltaSolutions\\Cart\\.*
+          must_not:
+            - type: className
+              regex: PaltaSolutions\\Cart\\Contracts\\.*
+    - name: App
+      collectors:
+        - type: className
+          regex: App\\.*
+    - name: Contract
+      collectors:
+        - type: className
+          regex: PaltaSolutions\\[^\\]*\\Contracts\\.*
+    - name: Laravel
+      collectors:
+        - type: className
+          regex: (Laravel|Illuminate)\\.*
+  ruleset:
+    CartModule:
+      - App
+      - Contract
+      - Laravel
